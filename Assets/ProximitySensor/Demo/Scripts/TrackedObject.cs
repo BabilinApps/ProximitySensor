@@ -18,7 +18,6 @@ public class TrackedObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (proximitySensor.distance < 500)
             uiText.text = proximitySensor.distance.ToString("F1");
 
         //to get the closest target use:

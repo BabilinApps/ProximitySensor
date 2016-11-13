@@ -7,12 +7,22 @@ using System.Collections;
 public class ProximityTarget : MonoBehaviour {
     // Use this for initialization
     void Awake() {
-        
+
         GrabSensors.AddTracker(this.transform);
-	}
-	
-	// Update is called once per frame
-	void LateUpdate () {
+    }
+
+    public void OnEnable() {
+        GrabSensors.AddTracker(this.transform);
+    }
+
+    public void OnDisable() {
+        GrabSensors.RemoveTracker(this.transform);
+    }
+
+
+
+    // Update is called once per frame
+    void LateUpdate() {
         GrabSensors.NotifyObservers();
-	}
+    }
 }

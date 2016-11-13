@@ -16,6 +16,12 @@ public class ProximitySensor : MonoBehaviour, Observer {
 
     public void UpdateObserver(Transform target) {
         this.target = target;
-        distance = Vector3.Distance(transform.position, this.target.position);
+        if (this.target == null) {
+            distance = 1000;
+            return;
+        }
+        float dir = Mathf.Sign(-Vector3.Dot(transform.forward, target.position - transform.position));
+        
+        distance = Vector3.Distance(transform.position, this.target.position) * dir;
     }
 }

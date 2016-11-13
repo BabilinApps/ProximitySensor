@@ -30,8 +30,11 @@ public class GrabSensors  {
     static List<Transform> targets = new List<Transform>();
 
     public static void AddTracker(Transform target) {
-        targets.Add(target);
-        currentGrabber.UpdateTargets(targets);
+        var t = targets.Find(e => e.transform == target);
+        if (t == null) {
+            targets.Add(target);
+            currentGrabber.UpdateTargets(targets);
+        }
     }
 
     public static void RemoveTracker(Transform target) {
